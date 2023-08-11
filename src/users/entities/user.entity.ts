@@ -22,6 +22,9 @@ export class UserEntity {
   @Column({ type: 'string', unique: true })
   cellphone: string;
 
+  @Column({ type: 'string' })
+  password: string;
+
   @Column({ type: 'date' })
   birthday: Date;
 

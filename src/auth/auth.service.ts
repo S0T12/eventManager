@@ -6,7 +6,7 @@ export class AuthService {
   constructor(private usersService: UsersService) {}
 
   async signIn(cellPhone: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(cellPhone);
+    const user = await this.usersService.getByCellphone(cellPhone);
     if (user?.password !== pass) {
       throw new UnauthorizedException();
     }
