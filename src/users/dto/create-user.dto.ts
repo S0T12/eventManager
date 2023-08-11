@@ -1,21 +1,19 @@
 import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CreateEventDto {
+export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
-  title: string;
-
+  name: string;
   @IsString()
   @IsNotEmpty()
-  description: string;
-
+  family: string;
   @IsNumber()
   @IsNotEmpty()
-  categoryId: number;
+  age: number;
 
   @IsString()
   @IsNotEmpty()
-  location: string;
+  cellphone: string;
 
   @IsBoolean()
   @IsNotEmpty()
