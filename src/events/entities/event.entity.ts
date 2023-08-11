@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { UserEntity } from '../../users/entities/user.entity';
+import { CategoryEntity } from '../../categories/entities/category.entity';
 
 export class EventEntity {
   @PrimaryGeneratedColumn({ type: 'number' })
@@ -19,12 +22,24 @@ export class EventEntity {
   @Column({ type: 'string' })
   location: string;
 
+  @ManyToOne(
+    () => CategoryEntity,
+    (category) => {
+      category.id;
+    },
+  )
   @Column({ type: 'number' })
   categoryId: number;
 
   @Column({ type: 'date' })
   eventDate: Date;
 
+  @ManyToOne(
+    () => UserEntity,
+    (user) => {
+      user.id;
+    },
+  )
   @Column({ type: 'number' })
   userId: number;
 
