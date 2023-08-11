@@ -4,20 +4,22 @@ import { AppService } from './app.service';
 import { EventsModule } from './events/events.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntity } from './users/entities/user.entity';
 
 @Module({
   imports: [
-    EventsModule,
-    UsersModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.HOST,
-      port: parseInt(process.env.PORT),
-      username: process.env.USERNAME,
-      database: process.env.DATABASE,
+      host: 'localhost',
+      port: 5432,
+      username: 'arta',
+      database: 'events',
+      entities: [UserEntity],
       synchronize: true,
       autoLoadEntities: true,
     }),
+    EventsModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

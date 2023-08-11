@@ -5,9 +5,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
-  OneToMany,
 } from 'typeorm';
-import { EventEntity } from '../../events/entities/event.entity';
 @Entity()
 export class CategoryEntity {
   @PrimaryGeneratedColumn()
@@ -19,18 +17,13 @@ export class CategoryEntity {
   @Column({ type: 'number' })
   order: number;
 
-  @Column({ length: 50, type: 'string' })
+  @Column({ type: 'string' })
   name: string;
 
-  @OneToMany(
-    () => EventEntity,
-    (event) => {
-      event.id;
-    },
-  )
+  @Column()
   category: number;
 
-  @Column({ length: 300, type: 'string' })
+  @Column({ type: 'string' })
   icon: string;
 
   @Column()
