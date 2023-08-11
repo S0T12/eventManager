@@ -12,28 +12,30 @@ export class UsersService {
     private readonly _userRepository: Repository<UserEntity>,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
     const User = this._userRepository.create(createUserDto);
-    return this._userRepository.save(User);
+    return await this._userRepository.save(User);
   }
 
-  findAll() {
-    return this._userRepository.find();
+  async findAll() {
+    return await this._userRepository.find();
   }
 
-  findOne(id: number) {
-    return this._userRepository.findOne({ where: { id } });
+  async findOne(id: number) {
+    return await this._userRepository.findOne({ where: { id } });
   }
 
-  getByCellphone(cellPhone: string) {
-    return this._userRepository.findOne({ where: { cellphone: cellPhone } });
+  async getByCellphone(cellPhone: string) {
+    return await this._userRepository.findOne({
+      where: { cellphone: cellPhone },
+    });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return this._userRepository.update(id, updateUserDto);
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    return await this._userRepository.update(id, updateUserDto);
   }
 
-  remove(id: number) {
-    return this._userRepository.delete(id);
+  async remove(id: number) {
+    return await this._userRepository.delete(id);
   }
 }

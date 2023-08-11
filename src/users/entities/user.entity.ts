@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { CategoryEntity } from '../../categories/entities/category.entity';
+import { EventEntity } from '../../events/entities/event.entity';
 
 export class UserEntity {
   @PrimaryGeneratedColumn()
