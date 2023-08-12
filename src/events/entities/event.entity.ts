@@ -1,18 +1,18 @@
 import {
+  Entity,
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
+  PrimaryGeneratedColumn,
+  ManyToOne,
 } from 'typeorm';
 import { CategoryEntity } from '../../categories/entities/category.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 
 @Entity('event')
 export class EventEntity {
-  @PrimaryGeneratedColumn({ type: 'number' })
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'varchar' })
@@ -26,9 +26,6 @@ export class EventEntity {
 
   @ManyToOne(() => CategoryEntity, (category) => category.events)
   categoryId: CategoryEntity;
-
-  @Column({ type: 'date' })
-  eventDate: Date;
 
   @ManyToOne(() => UserEntity, (user) => user.events)
   userId: UserEntity;
