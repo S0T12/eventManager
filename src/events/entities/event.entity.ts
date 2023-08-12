@@ -2,6 +2,13 @@ import {
   Entity,
   Column,
   CreateDateColumn,
+<<<<<<< HEAD
+  DeleteDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+=======
+>>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
   UpdateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
@@ -10,7 +17,11 @@ import {
 import { CategoryEntity } from '../../categories/entities/category.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 
+<<<<<<< HEAD
+@Entity()
+=======
 @Entity('event')
+>>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
 export class EventEntity {
   @PrimaryGeneratedColumn()
   id: number;

@@ -14,6 +14,10 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
+<<<<<<< HEAD
+    const User = this._userRepository.create(createUserDto);
+    return await this._userRepository.save(User);
+=======
     const { password, ...rest } = createUserDto;
     const hashPassword = await bcrypt.hash(password, 10);
     const user = this._userRepository.create({
@@ -21,25 +25,28 @@ export class UsersService {
       ...rest,
     });
     return this._userRepository.save(user);
+>>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
   }
 
-  findAll() {
-    return this._userRepository.find();
+  async findAll() {
+    return await this._userRepository.find();
   }
 
-  findOne(id: number) {
-    return this._userRepository.findOne({ where: { id } });
+  async findOne(id: number) {
+    return await this._userRepository.findOne({ where: { id } });
   }
 
-  getByCellphone(cellPhone: string) {
-    return this._userRepository.findOne({ where: { cellphone: cellPhone } });
+  async getByCellphone(cellPhone: string) {
+    return await this._userRepository.findOne({
+      where: { cellphone: cellPhone },
+    });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return this._userRepository.update(id, updateUserDto);
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    return await this._userRepository.update(id, updateUserDto);
   }
 
-  remove(id: number) {
-    return this._userRepository.delete(id);
+  async remove(id: number) {
+    return await this._userRepository.delete(id);
   }
 }

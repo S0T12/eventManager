@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/item
+Content-Type: application/json
+
+{
+  "name": "shayan",
+  "family": "Eskandari",
+  "age": 12,
+  "cellphone": "09360183326",
+  "active": true
+}
