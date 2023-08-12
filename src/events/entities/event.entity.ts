@@ -1,59 +1,55 @@
 import {
+  Entity,
   Column,
   CreateDateColumn,
+<<<<<<< HEAD
   DeleteDateColumn,
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
+=======
+>>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
   UpdateDateColumn,
+  DeleteDateColumn,
+  PrimaryGeneratedColumn,
+  ManyToOne,
 } from 'typeorm';
-import { UserEntity } from '../../users/entities/user.entity';
 import { CategoryEntity } from '../../categories/entities/category.entity';
+import { UserEntity } from '../../users/entities/user.entity';
 
+<<<<<<< HEAD
 @Entity()
+=======
+@Entity('event')
+>>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
 export class EventEntity {
-  @PrimaryGeneratedColumn({ type: 'number' })
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'string' })
+  @Column({ type: 'varchar' })
   title: string;
 
-  @Column({ type: 'string' })
+  @Column({ type: 'varchar' })
   description: string;
 
-  @Column({ type: 'string' })
+  @Column({ type: 'varchar' })
   location: string;
 
-  @ManyToOne(
-    () => CategoryEntity,
-    (category) => {
-      category.id;
-    },
-  )
-  @Column({ type: 'number' })
-  categoryId: number;
+  @ManyToOne(() => CategoryEntity, (category) => category.events)
+  categoryId: CategoryEntity;
 
-  @Column({ type: 'date' })
-  eventDate: Date;
-
-  @ManyToOne(
-    () => UserEntity,
-    (user) => {
-      user.id;
-    },
-  )
-  @Column({ type: 'number' })
-  userId: number;
+  @ManyToOne(() => UserEntity, (user) => user.events)
+  userId: UserEntity;
 
   @Column({ type: 'boolean' })
   active: boolean;
 
-  @CreateDateColumn({ type: 'date' })
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'date' })
-  updateAt: Date;
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
 
-  @DeleteDateColumn({ type: 'date' })
+  @DeleteDateColumn({ type: 'timestamp' })
   deletedAt: Date;
 }

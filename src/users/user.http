@@ -1,0 +1,17 @@
+### create
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "helloworld",
+    "name": "helloworld",
+    "password": "helloworld",
+    "family": "helloworld",
+    "age": 12,
+    "cellphone": "123456789",
+    "active": false
+}
+
+### Get
+GET http://localhost:3000/users/
+Content-Type: application/json

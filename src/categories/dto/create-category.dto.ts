@@ -1,6 +1,5 @@
 import {
   IsBoolean,
-  IsDate,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -20,9 +19,9 @@ export class CreateCategoryDto {
   @IsNotEmpty()
   active: boolean;
 
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
-  parentId: number;
+  parentId?: number;
 
   @IsNumber()
   @IsNotEmpty()

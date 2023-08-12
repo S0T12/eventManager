@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateEventDto } from './dto/create-event.dto';
-import { UpdateEventDto } from './dto/update-event.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { EventEntity } from './entities/event.entity';
@@ -11,9 +9,10 @@ export class EventsService {
     @InjectRepository(EventEntity)
     private readonly _eventRepository: Repository<EventEntity>,
   ) {}
-  create(createEventDto: CreateEventDto) {
-    const User = this._eventRepository.create(createEventDto);
-    return this._eventRepository.save(User);
+
+  async create(createEventDto) {
+    const event = await this._eventRepository.create(createEventDto);
+    return this._eventRepository.save(event);
   }
 
   findAll() {
@@ -24,8 +23,9 @@ export class EventsService {
     return this._eventRepository.findOne({ where: { id } });
   }
 
-  update(id: number, updateEventDto: UpdateEventDto) {
-    return this._eventRepository.update(id, updateEventDto);
+  async update(id: number, updateEventDto) {
+    await this._eventRepository.update(id, updateEventDto);
+    return this._eventRepository.findOne({ where: { id } });
   }
 
   remove(id: number) {
