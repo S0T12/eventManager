@@ -21,7 +21,7 @@ export class CategoryEntity {
   @Column({ type: 'varchar' })
   icon: string;
 
-  @Column({ type: 'number' })
+  @Column({ type: 'integer' })
   order: number;
 
   @ManyToOne(() => CategoryEntity, { nullable: true })
