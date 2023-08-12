@@ -10,9 +10,9 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signIn(cellPhone: string, pass: string): Promise<any> {
-    const user = await this.usersService.getByCellphone(cellPhone);
-    const match = await bcrypt.compare(pass, user?.password || '');
+  async signIn(cellphone: string, password: string): Promise<any> {
+    const user = await this.usersService.getByCellphone(cellphone);
+    const match = await bcrypt.compare(password, user?.password || '');
     if (!user || !match) {
       throw new UnauthorizedException();
     }
