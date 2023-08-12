@@ -15,6 +15,10 @@ export class CreateUserDto {
   @IsNotEmpty()
   family: string;
 
+  @IsString()
+  @IsNotEmpty()
+  password: string;
+
   @IsNumber()
   @IsNotEmpty()
   age: number;

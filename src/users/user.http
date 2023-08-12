@@ -3,11 +3,12 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "h",
-    "password": "h",
-    "family": "h",
+    "username": "helloworld",
+    "name": "helloworld",
+    "password": "helloworld",
+    "family": "helloworld",
     "age": 12,
-    "cellphone": "1",
+    "cellphone": "123456789",
     "active": false
 }
 
