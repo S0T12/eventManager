@@ -5,36 +5,43 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
 } from 'typeorm';
-@Entity()
+import { EventEntity } from '../../events/entities/event.entity';
+
+@Entity('category')
 export class CategoryEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'number' })
-  parentId: number;
+  @Column({ type: 'varchar' })
+  name: string;
+
+  @Column({ type: 'varchar' })
+  icon: string;
 
   @Column({ type: 'number' })
   order: number;
 
-  @Column({ type: 'string' })
-  name: string;
+  @ManyToOne(() => CategoryEntity, { nullable: true })
+  parent: CategoryEntity;
 
-  @Column()
-  category: number;
+  @OneToMany(() => CategoryEntity, (category) => category.parent)
+  subcategories: CategoryEntity[];
 
-  @Column({ type: 'string' })
-  icon: string;
-
-  @Column()
+  @Column({ type: 'boolean' })
   active: boolean;
 
-  @CreateDateColumn()
+  @OneToMany(() => EventEntity, (event) => event.categoryId)
+  events: EventEntity[];
+
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ type: 'timestamp' })
   deletedAt: Date;
 }

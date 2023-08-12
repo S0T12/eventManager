@@ -3,25 +3,27 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { EventEntity } from '../../events/entities/event.entity';
 
 @Entity('user')
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'char' })
-  username: string;
+  @Column({ type: 'varchar' })
+  name: string;
 
-  @Column({ type: 'char' })
+  @Column({ type: 'varchar' })
   family: string;
 
-  @Column({ type: 'int2' })
+  @Column({ type: 'smallint' })
   age: number;
 
-  @Column({ type: 'char', unique: true })
+  @Column({ type: 'varchar', unique: true })
   cellphone: string;
 
   @Column({ type: 'text' })
@@ -33,12 +35,15 @@ export class UserEntity {
   @Column({ type: 'boolean' })
   active: boolean;
 
-  @CreateDateColumn()
+  @OneToMany(() => EventEntity, (event) => event.userId)
+  events: EventEntity[];
+
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ type: 'timestamp' })
   deletedAt: Date;
 }
