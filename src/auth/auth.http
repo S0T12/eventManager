@@ -3,6 +3,6 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "cellphone": "123456789",
-    "password": "helloworld"
+    "cellphone": "123",
+    "password": "pass"
 }

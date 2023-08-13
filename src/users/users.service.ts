@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
@@ -13,19 +13,20 @@ export class UsersService {
     private readonly _userRepository: Repository<UserEntity>,
   ) {}
 
-  async create(createUserDto: CreateUserDto) {
-<<<<<<< HEAD
-    const User = this._userRepository.create(createUserDto);
-    return await this._userRepository.save(User);
-=======
+  async create(createUserDto: CreateUserDto): Promise<UserEntity> {
+    const existingUser = await this.getByCellphone(createUserDto.cellphone);
+    if (existingUser) {
+      throw new BadRequestException('Cellphone number is already in use');
+    }
+
     const { password, ...rest } = createUserDto;
     const hashPassword = await bcrypt.hash(password, 10);
     const user = this._userRepository.create({
       password: hashPassword,
       ...rest,
     });
+
     return this._userRepository.save(user);
->>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
   }
 
   async findAll() {

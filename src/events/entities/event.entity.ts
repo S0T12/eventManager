@@ -1,27 +1,16 @@
 import {
   Entity,
-  Column,
-  CreateDateColumn,
-<<<<<<< HEAD
-  DeleteDateColumn,
-  Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
-=======
->>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
+  Column,
+  ManyToOne,
+  CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  PrimaryGeneratedColumn,
-  ManyToOne,
 } from 'typeorm';
 import { CategoryEntity } from '../../categories/entities/category.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 
-<<<<<<< HEAD
-@Entity()
-=======
 @Entity('event')
->>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
 export class EventEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -36,10 +25,10 @@ export class EventEntity {
   location: string;
 
   @ManyToOne(() => CategoryEntity, (category) => category.events)
-  categoryId: CategoryEntity;
+  category: CategoryEntity;
 
   @ManyToOne(() => UserEntity, (user) => user.events)
-  userId: UserEntity;
+  user: UserEntity;
 
   @Column({ type: 'boolean' })
   active: boolean;

@@ -1,38 +1,40 @@
-### Create Category
-POST http://localhost:3000/categories
+### Create Event
+POST http://localhost:3000/events
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
 
 {
-  "name": "Category",
-  "icon": "category.png",
-  "order": 1,
+  "title": "Event",
+  "description": "This is a new event",
+  "location": "New york",
+  "categoryId": 1,
   "active": true
 }
 
-### Get All Categories
-GET http://localhost:3000/categories
+### Get All Events
+GET http://localhost:3000/events
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
 
-### Get Category by ID
-GET http://localhost:3000/categories/1
+### Get Event by ID
+GET http://localhost:3000/events/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
 
-### Update Category
-PATCH http://localhost:3000/categories/1
+### Update Event
+PATCH http://localhost:3000/events/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
 
 {
-  "name": "Updated",
-  "icon": "category2.png",
-  "order": 2,
+  "title": "Updated Event",
+  "description": " updated",
+  "location": "London",
+  "categoryId": 2,
   "active": false
 }
 
-### Delete Category
-DELETE http://localhost:3000/categories/2
+### Delete Event
+DELETE http://localhost:3000/events/2
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
