@@ -33,7 +33,7 @@ export class CategoryEntity {
   @Column({ type: 'boolean' })
   active: boolean;
 
-  @OneToMany(() => EventEntity, (event) => event.categoryId)
+  @OneToMany(() => EventEntity, (event) => event.category)
   events: EventEntity[];
 
   @CreateDateColumn({ type: 'timestamp' })

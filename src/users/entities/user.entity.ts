@@ -1,19 +1,12 @@
 import {
+  Entity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
-<<<<<<< HEAD
-=======
-  Entity,
->>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-<<<<<<< HEAD
-import { CategoryEntity } from '../../categories/entities/category.entity';
-=======
->>>>>>> 93379fa86e28ddf0b4e03efd59e85a561c8ef2dd
 import { EventEntity } from '../../events/entities/event.entity';
 
 @Entity('user')
@@ -42,7 +35,7 @@ export class UserEntity {
   @Column({ type: 'boolean' })
   active: boolean;
 
-  @OneToMany(() => EventEntity, (event) => event.userId)
+  @OneToMany(() => EventEntity, (event) => event.user)
   events: EventEntity[];
 
   @CreateDateColumn({ type: 'timestamp' })

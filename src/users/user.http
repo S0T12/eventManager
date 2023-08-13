@@ -1,17 +1,43 @@
-### create
+### Create User
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "helloworld",
-    "name": "helloworld",
-    "password": "helloworld",
-    "family": "helloworld",
-    "age": 12,
-    "cellphone": "123456789",
-    "active": false
+  "name": "hassan",
+  "family": "hassan",
+  "age": 25,
+  "cellphone": "123",
+  "password": "pass",
+  "birthday": "2000-01-01",
+  "active": false
 }
 
-### Get
-GET http://localhost:3000/users/
+### Get All Users
+GET http://localhost:3000/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
+
+### Get User by ID
+GET http://localhost:3000/users/9
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
+
+### Update User
+PATCH http://localhost:3000/users/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI
+
+{
+  "name": "hassan",
+  "family": "hassan",
+  "age": 26,
+  "cellphone": "123456789",
+  "password": "newpassword123",
+  "birthday": "2000-01-01",
+  "active": true
+}
+
+### Delete User
+DELETE http://localhost:3000/users/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhhc3NhbiIsInN1YiI6IjEyMyIsImlhdCI6MTY5MTg4MzYxNH0.0eK4t7eaIWAGAqL3Q29WBGt8yczg9O58_iLMOLmqkPI

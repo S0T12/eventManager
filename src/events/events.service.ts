@@ -10,8 +10,8 @@ export class EventsService {
     private readonly _eventRepository: Repository<EventEntity>,
   ) {}
 
-  async create(createEventDto) {
-    const event = await this._eventRepository.create(createEventDto);
+  create(createEventDto) {
+    const event = this._eventRepository.create(createEventDto);
     return this._eventRepository.save(event);
   }
 

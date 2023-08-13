@@ -21,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
       entities: [UserEntity, EventEntity, CategoryEntity],
       synchronize: true,
       autoLoadEntities: true,
+      logging: true,
     }),
     EventsModule,
     UsersModule,
